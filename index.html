@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Title tags -->
+    <title>Palavras Cruzadas</title>
+    <link rel="shortcut icon" href="arquivos/favicon.png" type="image/x-icon">
+    
+    <!-- Bootstrap and main CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <nav class="p-5">
+        <!-- Menu Bootstrap -->
+        <ul class="nav nav-pills align-items-center">
+            <li class="nav-item pr-4">
+                <a href="" data-toggle="tooltip" title="Home"><img src="arquivos/favicon.png" alt="Ícone quadriculado"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="javascript:btnNovoJogo()">Novo jogo</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                    aria-expanded="false">Desenvolvedores</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item disabled" href="#">Alfredo Albélis</a>
+                    <a class="dropdown-item disabled" href="#">Cléofas Peres</a>
+                    <a class="dropdown-item disabled" href="#">Felipe Marchi</a>
+                    <a class="dropdown-item disabled" href="#">Pedro Bernini</a>
+                    <a class="dropdown-item disabled" href="#">Vinícius Abrantes</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- CONTEUDO -->
+    <div class="pr-5 pb-5 pl-5">
+        <div class="row">
+
+            <!-- AREA DE FORMULARIOS -->
+            <div class="col-md-3 p-4 borda-padrao">
+                <!-- Formulario Bootstrap -->
+                <form id="form-cadastro" action="">
+                    <h1 class="mb-4">Cadastrar palavras</h1>
+                    <div class="form-group">
+                        <label for="palavra">Nova palavra</label>
+                        <input type="text" class="form-control" id="palavra" placeholder="Ex.: HTML" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dica">Dica</label>
+                        <textarea class="form-control" id="dica" placeholder="Ex.: Linguagem comum no desenvolvimento WEB" rows="2" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-4">Cadastrar</button>
+                </form>
+                
+                <!-- Formulario Bootstrap -->
+                <form id="form-jogo" action="" class="d-none">
+                    <h1 class="mb-4">Configurar novo jogo</h1>
+                    <div class="form-group">
+                        <label for="quantidade">Número de palavras</label>
+                        <input type="number" class="form-control" id="quantidade" placeholder="Ex.: 7" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-4">Jogar</button>
+                </form>
+            </div>
+
+            <!-- AREA DO JOGO -->
+            <div class="col-md-9 p-4">
+                <div class="home"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- AUTENTICACAO CLIENTSIDE -->
+    <script>
+    
+    </script>
+
+    <!-- Bootstrap and main JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="js/palavras-cruzadas.js"></script>
+</body>
+</html>

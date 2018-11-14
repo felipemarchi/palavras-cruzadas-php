@@ -1,0 +1,14 @@
+/* GERAL */
+.borda-padrao {
+    border: 1px solid;
+    border-radius: 15px;
+}
+
+/* HEADER */
+nav img {
+    max-width: 3rem;
+}
+.nav-pills .show>.nav-link {
+    color: #007bff;
+    background-color: #fff;
+}
