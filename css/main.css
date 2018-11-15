@@ -33,8 +33,7 @@ form {
     font-weight: bold;
 }
 .celula[disabled] {
-    background: #000;
-    border: 1px solid #000;
+    background: #ccc;
 }
 @media screen and (max-width: 660px) {
     .celula {
