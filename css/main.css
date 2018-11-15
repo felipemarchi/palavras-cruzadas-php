@@ -36,6 +36,12 @@ form {
     background: #000;
     border: 1px solid #000;
 }
+@media screen and (max-width: 660px) {
+    .celula {
+        width: 25px;
+        height: 25px;
+    }
+}
 @media screen and (max-width: 426px) {
     .celula {
         width: 14px;
