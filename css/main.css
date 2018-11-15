@@ -1,8 +1,4 @@
 /* GERAL */
-.borda-padrao {
-    border: 1px solid;
-    border-radius: 15px;
-}
 a.disabled {
     pointer-events: none;
 }
@@ -19,17 +15,34 @@ nav img {
     background-color: #fff;
 }
 
-/* ÁREA DO JOGO */
-.col-1 {
-    padding: 0;
+/* FORMULÁRIOS */
+form {
+    border: 1px solid;
+    border-radius: 15px;
+    padding: 1.5rem;
 }
-.col-1 input {
-    width: 100%;
+
+/* ÁREA DO JOGO */
+.celula {
+    width: 40px;
+    height: 40px;
     text-align: center;
     text-transform: uppercase;
     border: 1px solid #ccc;
+    margin-bottom: 4px;
+    font-weight: bold;
 }
-.col-1 input[disabled] {
+.celula[disabled] {
     background: #000;
     border: 1px solid #000;
+}
+@media screen and (max-width: 426px) {
+    .celula {
+        width: 14px;
+        height: 14px;
+    }
+    .col-lg-9.p-4.text-center {
+        padding: 0!important;
+        padding-top: 1.5rem!important;
+    }
 }
