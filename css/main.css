@@ -3,12 +3,33 @@
     border: 1px solid;
     border-radius: 15px;
 }
+a.disabled {
+    pointer-events: none;
+}
 
 /* HEADER */
+nav {
+    box-shadow: 0 0 20px #888;
+}
 nav img {
     max-width: 3rem;
 }
 .nav-pills .show>.nav-link {
     color: #007bff;
     background-color: #fff;
+}
+
+/* ÁREA DO JOGO */
+.col-1 {
+    padding: 0;
+}
+.col-1 input {
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    border: 1px solid #ccc;
+}
+.col-1 input[disabled] {
+    background: #000;
+    border: 1px solid #000;
 }
