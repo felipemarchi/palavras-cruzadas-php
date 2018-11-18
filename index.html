@@ -43,11 +43,10 @@
     <!-- CONTEUDO -->
     <section class="p-5">
         <div class="row">
-
             <!-- AREA DE FORMULARIOS -->
             <div class="col-lg-3">
                 <!-- Formulario Bootstrap -->
-                <form id="form-cadastro" action="">
+                <form id="form-cadastro" name="myForm" action="#" onsubmit="return validateForm(this);">
                     <h1 class="mb-4">Cadastrar palavras</h1>
                     <div class="form-group">
                         <label for="palavra">Nova palavra</label>
@@ -238,7 +237,18 @@
 
     <!-- AUTENTICACAO CLIENTSIDE -->
     <script>
-    
+        function validateForm() {
+            var str = document.getElementById("palavra").value
+            var tamanho = str.length;
+            
+            if(tamanho >= 3 && tamanho <= 12){
+                window.alert("Tamanho da palavra ta certa - É SÓ APAGAR O WINDOW.ALLERT LA, DEIXEI SÓ PRA MOSTRAR Q TA FUNCIONANDO");
+                return true;
+            } else{
+                window.alert("Tamanho da Palavra tem q ser de 3 a 12 - É SÓ APAGAR O WINDOW.ALLERT LA, DEIXEI SÓ PRA MOSTRAR Q TA FUNCIONANDO");
+                return false;
+            }
+        }
     </script>
 
     <!-- Bootstrap and main JS -->
