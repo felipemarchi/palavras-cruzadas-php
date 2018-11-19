@@ -43,18 +43,19 @@
     <!-- CONTEUDO -->
     <section class="p-5">
         <div class="row">
+
             <!-- AREA DE FORMULARIOS -->
             <div class="col-lg-3">
                 <!-- Formulario Bootstrap -->
-                <form id="form-cadastro" name="myForm" action="#" onsubmit="return validateForm(this);">
+                <form id="form-cadastro" action="" onsubmit="return validateForm(this)">
                     <h1 class="mb-4">Cadastrar palavras</h1>
                     <div class="form-group">
                         <label for="palavra">Nova palavra</label>
-                        <input type="text" class="form-control" id="palavra" placeholder="Ex.: HTML" required>
+                        <input type="text" class="form-control" name="palavra" id="palavra" placeholder="Ex.: HTML" required>
                     </div>
                     <div class="form-group">
                         <label for="dica">Dica</label>
-                        <textarea class="form-control" id="dica" placeholder="Ex.: Linguagem comum no desenvolvimento WEB" rows="2" required></textarea>
+                        <textarea class="form-control" name="dica" id="dica" placeholder="Ex.: Linguagem comum no desenvolvimento WEB" rows="2" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary mt-4">Cadastrar</button>
                 </form>
@@ -64,7 +65,7 @@
                     <h1 class="mb-4">Configurar novo jogo</h1>
                     <div class="form-group">
                         <label for="quantidade">Número de palavras</label>
-                        <input type="number" class="form-control" id="quantidade" placeholder="Ex.: 7" required>
+                        <input type="number" class="form-control" name="quantidade" id="quantidade" placeholder="Ex.: 7" required>
                     </div>
                     <button type="submit" class="btn btn-primary mt-4">Jogar</button>
                 </form>
@@ -236,19 +237,19 @@
     </section>
 
     <!-- AUTENTICACAO CLIENTSIDE -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
-        function validateForm() {
-            var str = document.getElementById("palavra").value
-            var tamanho = str.length;
-            
-            if(tamanho >= 3 && tamanho <= 12){
-                window.alert("Tamanho da palavra ta certa - É SÓ APAGAR O WINDOW.ALLERT LA, DEIXEI SÓ PRA MOSTRAR Q TA FUNCIONANDO");
-                return true;
-            } else{
-                window.alert("Tamanho da Palavra tem q ser de 3 a 12 - É SÓ APAGAR O WINDOW.ALLERT LA, DEIXEI SÓ PRA MOSTRAR Q TA FUNCIONANDO");
-                return false;
-            }
+    function validateForm(form) {
+        var str = form.palavra.value
+        var tamanho = str.length;
+        
+        if(tamanho >= 3 && tamanho <= 12)
+            return true;
+        else {
+            swal("Atenção!", "A palavra deve conter entre 3 e 12 caracteres!", "warning");
+            return false;
         }
+    }
     </script>
 
     <!-- Bootstrap and main JS -->
