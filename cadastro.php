@@ -2,29 +2,15 @@
 <?php
     $palavra = strtoupper($_POST["palavra"]);
     $dica = $_POST["dica"];
+    $categoria = $_POST["novaCategoria"];
 
-    //Separa em dois blocos try-catch para pegar o erro de conexão ou execução da query
-    try {
-        $conn = new PDO("mysql:host=mysqlinstance.c3yy9bhtywfb.sa-east-1.rds.amazonaws.com;port=3306;dbname=webdb", "sa", "password");
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }
-    catch(PDOException $e) {
-        echo '<script>window.onload = function() {
-                swal({
-                    title: "Falha na conexão!",
-                    text: "Não foi possível estabelecer uma conexão com o banco de dados",
-                    icon: "error",
-                    closeOnEsc: false,
-                    closeOnClickOutside: false
-                })
-                .then((value) => {
-                    window.location.href = "/";
-                });
-            }</script>'; 
-    }
+    if ($categoria == "")
+        $categoria = $_POST["categoria"];
+        
+    include 'conexao.php';
     
     try {
-        $query = "INSERT INTO cruzada VALUES (" . "'" . $palavra . "','" . $dica . "')";
+        $query = "INSERT INTO cruzada VALUES (" . "'" . $palavra . "','" . $dica . "','" . $categoria . "')";
         $conn->exec($query);
         echo '<script>window.onload = function() {
                 swal({
