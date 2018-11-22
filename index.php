@@ -25,7 +25,7 @@
                 <a href="" data-toggle="tooltip" title="Home"><img src="arquivos/favicon.png" alt="Ícone quadriculado"></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="javascript:btnNovoJogo()">Novo jogo</a>
+                <a class="nav-link active" href="javascript:jogoTeste()">Novo jogo</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -269,5 +269,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="js/palavras-cruzadas.js"></script>
+    
+    <!-- Allows tooltip -->
+    <script>$('input').tooltip();</script>
+
 </body>
 </html>

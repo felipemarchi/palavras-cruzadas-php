@@ -6,13 +6,19 @@ function btnNovoJogo() {
     form2.removeAttribute("class")
 }
 
-// Pegar do banco e montar vetor
+// Pegar do banco e montar vetores
 var p1 = "alfredo"
 var p2 = "cléofas"
 var p3 = "felipe"
 var p4 = "pedro"
 var p5 = "vinícius"
 var palavras = [p5,p3,p4,p2,p1]
+var d1 = "alfredo"
+var d2 = "cléofas"
+var d3 = "felipe"
+var d4 = "pedro"
+var d5 = "vinícius"
+var dicas = [d5,d3,d4,d2,d1]
 var mapaPalavras = []
 
 function jogoTeste() {
@@ -224,7 +230,7 @@ function jogoTeste() {
     } // Mapear próxima palavra da lista...
 
 
-    // EXIBIR CÉLULAS MAPEADAS
+    // EXIBIR CÉLULAS MAPEADAS COM DICAS
     var celula
     for (i=0; i<palavras.length; i++){
         x = mapaPalavras[i][0]
@@ -232,12 +238,14 @@ function jogoTeste() {
         direcao = mapaPalavras[i][2]
         celula = y*12 + (x + 1)
 
+        document.getElementById("c"+celula).setAttribute("class","celula dica")
+        document.getElementById("c"+celula).setAttribute("data-original-title",dicas[i])
+
         for (j=0; j<palavras[i].length; j++){
             if (j != 0)
                 direcao == 0 ? celula += 12 : celula += 1
 
             document.getElementById("c"+celula).removeAttribute("disabled")
-            document.getElementById("c"+celula).setAttribute("value",palavras[i][j])
         }
     }
 }

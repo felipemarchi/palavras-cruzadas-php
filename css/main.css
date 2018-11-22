@@ -51,3 +51,7 @@ form {
         padding-top: 1.5rem!important;
     }
 }
+.dica {
+    border: 2px solid #007bff!important;
+    border-radius: 5px;
+}
