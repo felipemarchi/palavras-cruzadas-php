@@ -1,4 +1,3 @@
-<script src="js/palavras-cruzadas.js"></script>
 <?php   
     function configuraJogo() {
         include 'conexao.php';
