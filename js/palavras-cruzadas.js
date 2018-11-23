@@ -7,7 +7,7 @@ function btnNovoJogo() {
 }
 
 var mapaPalavras = []
-function montaTabuleiro() {
+function montaTabuleiro(palavras, dicas) {
     
     // MAPEAR CADA PALAVRA DO VETOR
     // mapaPalvras[i] da palavras[i] = [coordenadaX, coordenadaY, direção]
