@@ -1,4 +1,6 @@
-<?php    
+<?php
+    include 'conexao.php';
+
     try {
         $query = "SELECT DISTINCT categoria FROM cruzada";
         $stmt = $conn->query($query);
@@ -7,5 +9,7 @@
         }            
     }
     catch(PDOException $e) {
-    }	
+    }
+    
+    $conn = null;
 ?>

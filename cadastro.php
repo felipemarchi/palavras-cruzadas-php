@@ -38,5 +38,8 @@
                     window.location.href = "/";
                 });
             }</script>';
-    }	
+    }
+        
+    $conn = null;
+
 ?>

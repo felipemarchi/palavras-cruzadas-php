@@ -6,23 +6,9 @@ function btnNovoJogo() {
     form2.removeAttribute("class")
 }
 
-// Pegar do banco e montar vetores
-var p1 = "alfredo"
-var p2 = "cléofas"
-var p3 = "felipe"
-var p4 = "pedro"
-var p5 = "vinícius"
-var palavras = [p5,p3,p4,p2,p1]
-var d1 = "alfredo"
-var d2 = "cléofas"
-var d3 = "felipe"
-var d4 = "pedro"
-var d5 = "vinícius"
-var dicas = [d5,d3,d4,d2,d1]
 var mapaPalavras = []
-
-function jogoTeste() {
-
+function montaTabuleiro() {
+    
     // MAPEAR CADA PALAVRA DO VETOR
     // mapaPalvras[i] da palavras[i] = [coordenadaX, coordenadaY, direção]
     // direção (0 = vertical, 1 = horizontal)
@@ -228,7 +214,6 @@ function jogoTeste() {
         }
 
     } // Mapear próxima palavra da lista...
-
 
     // EXIBIR CÉLULAS MAPEADAS COM DICAS
     var celula
