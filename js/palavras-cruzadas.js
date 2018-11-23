@@ -216,7 +216,7 @@ function montaTabuleiro(palavras, dicas) {
     } // Mapear próxima palavra da lista...
 
     // EXIBIR CÉLULAS MAPEADAS COM DICAS
-    var celula, dicaAtual, el, d1, d2
+    var celula, dicaAtual, el, d
     for (i=0; i<palavras.length; i++){
         x = mapaPalavras[i][0]
         y = mapaPalavras[i][1]
@@ -226,21 +226,12 @@ function montaTabuleiro(palavras, dicas) {
         el = document.getElementById("c"+celula)
         el.setAttribute("class","celula dica")
         dicaAtual = el.getAttribute("data-original-title")
-
-        if (dicaAtual != "") {
-
-            if (direcao == 0) {
-                d1 = "H"
-                d2 = "V"
-            } else {
-                d1 = "V"
-                d2 = "H"
-            }
-            
-            el.setAttribute("data-original-title","(" + d1 + "): " + dicaAtual + " (" + d2 + "): " + dicas[i])
-
-        } else
-            el.setAttribute("data-original-title",dicas[i])
+        direcao == 0 ? d = "V" : d = "H"
+        
+        if (dicaAtual == "")         
+            el.setAttribute("data-original-title", "(" + d + "): " + dicas[i])   
+        else
+            el.setAttribute("data-original-title", dicaAtual + " (" + d + "): " + dicas[i])
 
         for (j=0; j<palavras[i].length; j++){
             if (j != 0)
