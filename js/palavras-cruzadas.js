@@ -216,15 +216,31 @@ function montaTabuleiro(palavras, dicas) {
     } // Mapear próxima palavra da lista...
 
     // EXIBIR CÉLULAS MAPEADAS COM DICAS
-    var celula
+    var celula, dicaAtual, el, d1, d2
     for (i=0; i<palavras.length; i++){
         x = mapaPalavras[i][0]
         y = mapaPalavras[i][1]
         direcao = mapaPalavras[i][2]
-        celula = y*12 + (x + 1)
 
-        document.getElementById("c"+celula).setAttribute("class","celula dica")
-        document.getElementById("c"+celula).setAttribute("data-original-title",dicas[i])
+        celula = y*12 + (x + 1)
+        el = document.getElementById("c"+celula)
+        el.setAttribute("class","celula dica")
+        dicaAtual = el.getAttribute("data-original-title")
+
+        if (dicaAtual != "") {
+
+            if (direcao == 0) {
+                d1 = "H"
+                d2 = "V"
+            } else {
+                d1 = "V"
+                d2 = "H"
+            }
+            
+            el.setAttribute("data-original-title","(" + d1 + "): " + dicaAtual + " (" + d2 + "): " + dicas[i])
+
+        } else
+            el.setAttribute("data-original-title",dicas[i])
 
         for (j=0; j<palavras[i].length; j++){
             if (j != 0)
