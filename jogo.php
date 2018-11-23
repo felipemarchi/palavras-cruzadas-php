@@ -1,5 +1,5 @@
 <?php   
-    function configuraJogo() {
+    if(isset($_POST['categoriaJogo'])) {
         include 'conexao.php';
 
         $categoria = $_POST["categoriaJogo"];
@@ -23,9 +23,5 @@
         echo '<script>window.onload = function() {
                 montaTabuleiro()
               }</script>';
-    }
-    
-    if(isset($_POST['categoriaJogo'])){
-        configuraJogo();  
     }
 ?>
