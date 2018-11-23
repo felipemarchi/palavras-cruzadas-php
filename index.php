@@ -25,7 +25,7 @@
                 <a href="" data-toggle="tooltip" title="Home"><img src="arquivos/favicon.png" alt="Ícone quadriculado"></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="javascript:jogoTeste()">Novo jogo</a>
+                <a class="nav-link active" href="javascript:btnNovoJogo()">Novo jogo</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -61,6 +61,7 @@
                     <div class="form-group">
                         <label for="categoria">Categoria</label>
                         <select name="categoria" id="categoria" class="custom-select">
+                            <option value="" selected disabled>Selecione uma categoria</option>
                             <?php include 'categorias.php';?>
                         </select>
                     </div>
@@ -253,14 +254,20 @@
     <script>
     function validateForm(form) {
         var str = form.palavra.value
-        var tamanho = str.length;
+        var tamanho = str.length
+        var mensagem = ""
         
-        if(tamanho >= 3 && tamanho <= 12)
-            return true;
-        else {
-            swal("Atenção!", "A palavra deve conter entre 3 e 12 caracteres!", "warning");
-            return false;
-        }
+        if (tamanho < 3 || tamanho > 12)
+            mensagem = "• A palavra deve conter entre 3 e 12 caracteres!\n"
+
+        if (form.categoria.value == "" && form.novaCategoria.value == "")
+            mensagem += "• A palavra deve possuir uma categoria!"
+
+        if(mensagem != "") {
+            swal("Atenção!", mensagem, "warning");
+            return false
+        } else
+            return true
     }
     </script>
 
