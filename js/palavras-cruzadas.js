@@ -244,16 +244,17 @@ function montaTabuleiro() {
             el = document.getElementById("c"+celula)
             el.removeAttribute("disabled")
             el.setAttribute("oninput","javascript:confereLetra(this)")
+            el.setAttribute("onfocus","this.select()")
         }
     }
 }
 
+var lado, mantemDirecao = false
 function confereLetra(changed) {
     var i, j
     var celula
-    var minhaDirecao
     var meuId = changed.getAttribute("id")
-    var meuValue = changed.value
+    var meuValue = changed.value.toUpperCase()
 
     for (i=0; i<palavras.length; i++) {
         x = mapaPalavras[i][0]
@@ -267,9 +268,15 @@ function confereLetra(changed) {
                 direcao == 0 ? celula += 12 : celula += 1
 
             if ("c"+celula == meuId) {
-                minhaDirecao = direcao 
+                if (j == 0 && mantemDirecao == false) {
+                    lado = direcao
+                    mantemDirecao = true
+                }
 
-                if (palavras[i][j] == meuValue.toUpperCase())
+                if (j == palavras[i].length - 1)
+                    mantemDirecao = false
+
+                if (palavras[i][j] == meuValue)
                     acertos[i][j] = 1
                 else
                     acertos[i][j] = 0
@@ -280,7 +287,7 @@ function confereLetra(changed) {
     }
 
     celula = parseInt(meuId.slice(1, 4))
-    minhaDirecao == 0 ? celula += 12 : celula += 1
+    lado == 0 ? celula += 12 : celula += 1
     document.getElementById("c"+celula).focus()
 }
 
