@@ -7,12 +7,15 @@ function btnNovoJogo() {
 }
 
 var mapaPalavras = []
-function montaTabuleiro(palavras, dicas) {
+var x, y, direcao
+var acertos = []
+for (var i=0; i<palavras.length; i++)
+    acertos[i] = []
+function montaTabuleiro() {
     
     // MAPEAR CADA PALAVRA DO VETOR
     // mapaPalvras[i] da palavras[i] = [coordenadaX, coordenadaY, direção]
     // direção (0 = vertical, 1 = horizontal)
-    var x, y, direcao
     var i, j, combina
     var isolarPalavra = false
     for (i=0; i<palavras.length; i++){
@@ -218,16 +221,17 @@ function montaTabuleiro(palavras, dicas) {
     // EXIBIR CÉLULAS MAPEADAS COM DICAS
     var celula, dicaAtual, el, d
     for (i=0; i<palavras.length; i++){
+
         x = mapaPalavras[i][0]
         y = mapaPalavras[i][1]
         direcao = mapaPalavras[i][2]
+        direcao == 0 ? d = "V" : d = "H"
 
         celula = y*12 + (x + 1)
         el = document.getElementById("c"+celula)
         el.setAttribute("class","celula dica")
-        dicaAtual = el.getAttribute("data-original-title")
-        direcao == 0 ? d = "V" : d = "H"
-        
+
+        dicaAtual = el.getAttribute("data-original-title")        
         if (dicaAtual == "")         
             el.setAttribute("data-original-title", "(" + d + "): " + dicas[i])   
         else
@@ -237,7 +241,83 @@ function montaTabuleiro(palavras, dicas) {
             if (j != 0)
                 direcao == 0 ? celula += 12 : celula += 1
 
-            document.getElementById("c"+celula).removeAttribute("disabled")
+            el = document.getElementById("c"+celula)
+            el.removeAttribute("disabled")
+            el.setAttribute("oninput","javascript:confereLetra(this)")
+        }
+    }
+}
+
+function confereLetra(changed) {
+    var i, j
+    var celula
+    var minhaDirecao
+    var meuId = changed.getAttribute("id")
+    var meuValue = changed.value
+
+    for (i=0; i<palavras.length; i++) {
+        x = mapaPalavras[i][0]
+        y = mapaPalavras[i][1]
+        direcao = mapaPalavras[i][2]
+
+        celula = y*12 + (x + 1)
+
+        for (j=0; j<palavras[i].length; j++){
+            if (j != 0)
+                direcao == 0 ? celula += 12 : celula += 1
+
+            if ("c"+celula == meuId) {
+                minhaDirecao = direcao 
+
+                if (palavras[i][j] == meuValue.toUpperCase())
+                    acertos[i][j] = 1
+                else
+                    acertos[i][j] = 0
+
+                conferePalavra(i)
+            }
+        }
+    }
+
+    celula = parseInt(meuId.slice(1, 4))
+    minhaDirecao == 0 ? celula += 12 : celula += 1
+    document.getElementById("c"+celula).focus()
+}
+
+function conferePalavra(i) {
+    var j, celula, el, acerto = true
+
+    x = mapaPalavras[i][0]
+    y = mapaPalavras[i][1]
+    direcao = mapaPalavras[i][2]
+
+    for (j=0; j<palavras[i].length; j++){
+        if (acertos[i][j] != 1)
+            acerto = false
+    }
+
+    celula = y*12 + (x + 1) 
+    if (acerto) {  
+        for (j=0; j<palavras[i].length; j++){
+            if (j != 0)
+                direcao == 0 ? celula += 12 : celula += 1
+
+            el = document.getElementById("c"+celula)
+            if (j == 0)
+                el.setAttribute("class","celula dica acerto")
+            else
+                el.setAttribute("class","celula acerto")
+        }
+    } else {
+        for (j=0; j<palavras[i].length; j++){
+            if (j != 0)
+                direcao == 0 ? celula += 12 : celula += 1
+
+            el = document.getElementById("c"+celula)
+            if (j == 0)
+                el.setAttribute("class","celula dica")
+            else
+                el.setAttribute("class","celula")
         }
     }
 }

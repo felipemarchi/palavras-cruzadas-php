@@ -13,7 +13,7 @@
             while($row = $stmt->fetch(PDO::FETCH_ASSOC))
                 echo 'palavras.push("'.$row["palavra"].'");dicas.push("'.$row["dica"].'");';
             
-            echo 'montaTabuleiro(palavras,dicas);}</script>';
+            echo 'montaTabuleiro();}</script>';
         }
         catch(PDOException $e) {
         };
