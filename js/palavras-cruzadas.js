@@ -12,7 +12,8 @@ var mapaPalavras = []
 var x, y, direcao
 var acertos = []
 function montaTabuleiro(palavras, dicas) {
-    
+    swal("Controles", "• Clique nas células azuis para preencher uma palavra\n• Utilize as setas de navagação para percorrer o tabuleiro\n• Experimente utilizar a tecla Backspace para corrigir erros\n\nBom jogo :D", "info");
+
     vetorPalavras = palavras
     for (var i=0; i<vetorPalavras.length; i++)
         acertos[i] = []
@@ -218,6 +219,7 @@ function montaTabuleiro(palavras, dicas) {
             mapaPalavras[i] = [x,y,direcao]
         } else {
             palavras.splice(i,1)
+            vetorPalavras.splice(i,1)
         }
 
     } // Mapear próxima palavra da lista...
@@ -363,4 +365,14 @@ function conferePalavra(i) {
                 el.setAttribute("class","celula")
         }
     }
+
+    // Confere se todo o vetor está completo
+    acerto = true
+    for (j=0; j<vetorPalavras.length; j++)
+        for (var k=0; k<vetorPalavras[j].length; k++)
+            if (acertos[j][k] != 1)
+                acerto = false
+
+    if (acerto)
+        swal("Parabéns!", "Você completou o jogo!", "success");
 }

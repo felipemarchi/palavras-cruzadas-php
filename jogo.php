@@ -13,8 +13,7 @@
             while($row = $stmt->fetch(PDO::FETCH_ASSOC))
                 echo 'palavras.push("'.$row["palavra"].'");dicas.push("'.$row["dica"].'");';
             
-            echo 'montaTabuleiro(palavras, dicas);';
-            echo'swal("Controles", "• Clique nas células azuis para preencher uma palavra\n• Utilize as setas de navagação para percorrer o tabuleiro\n• Experimente utilizar a tecla Backspace para corrigir erros\n\nBom jogo :D", "info");}</script>';
+            echo 'montaTabuleiro(palavras, dicas);}</script>';
         }
         catch(PDOException $e) {
         };
