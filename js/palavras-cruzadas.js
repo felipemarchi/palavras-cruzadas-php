@@ -338,7 +338,7 @@ function conferePalavra(i) {
                 direcao == 0 ? celula += 12 : celula += 1
 
             el = document.getElementById("c"+celula)
-            if (j == 0)
+            if (j == 0 || el.getAttribute("class") == "celula dica")
                 el.setAttribute("class","celula dica acerto")
             else
                 el.setAttribute("class","celula acerto")
@@ -349,7 +349,7 @@ function conferePalavra(i) {
                 direcao == 0 ? celula += 12 : celula += 1
 
             el = document.getElementById("c"+celula)
-            if (j == 0)
+            if (j == 0 || el.getAttribute("class") == "celula dica acerto" || el.getAttribute("class") == "celula dica")
                 el.setAttribute("class","celula dica")
             else
                 el.setAttribute("class","celula")
