@@ -12,6 +12,20 @@ var mapaPalavras = []
 var x, y, direcao
 var acertos = []
 function montaTabuleiro(palavras, dicas) {
+
+    // Embaralhar vetores
+    var m = palavras.length, t, i
+    var t2
+    while (m) {
+        i = Math.floor(Math.random() * m--)
+        t = palavras[m]
+        t2 = dicas[m]
+        palavras[m] = palavras[i]
+        dicas[m] = dicas[i]
+        palavras[i] = t
+        dicas[i] = t2
+    }
+
     swal("Controles", "• Clique nas células azuis para preencher uma palavra\n• Utilize as setas de navagação para percorrer o tabuleiro\n• Experimente utilizar a tecla Backspace para corrigir erros\n\nBom jogo :D", "info");
 
     vetorPalavras = palavras
