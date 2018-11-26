@@ -14,7 +14,7 @@ for (var i=0; i<palavras.length; i++)
 function montaTabuleiro() {
     
     // MAPEAR CADA PALAVRA DO VETOR
-    // mapaPalvras[i] da palavras[i] = [coordenadaX, coordenadaY, direção]
+    // mapaPalavras[i] da palavras[i] = [coordenadaX, coordenadaY, direção]
     // direção (0 = vertical, 1 = horizontal)
     var i, j, combina
     var isolarPalavra = false
@@ -222,21 +222,25 @@ function montaTabuleiro() {
     var celula, dicaAtual, el, d
     for (i=0; i<palavras.length; i++){
 
+        // Informações da palavra
         x = mapaPalavras[i][0]
         y = mapaPalavras[i][1]
         direcao = mapaPalavras[i][2]
         direcao == 0 ? d = "V" : d = "H"
 
+        // Célula inicial da palavra com borda
         celula = y*12 + (x + 1)
         el = document.getElementById("c"+celula)
         el.setAttribute("class","celula dica")
 
+        // Adiciona dica única ou múltipla
         dicaAtual = el.getAttribute("data-original-title")        
         if (dicaAtual == "")         
             el.setAttribute("data-original-title", "(" + d + "): " + dicas[i])   
         else
             el.setAttribute("data-original-title", dicaAtual + " (" + d + "): " + dicas[i])
 
+        // Configura atributos de cada caracter da palavra
         for (j=0; j<palavras[i].length; j++){
             if (j != 0)
                 direcao == 0 ? celula += 12 : celula += 1
@@ -245,6 +249,23 @@ function montaTabuleiro() {
             el.removeAttribute("disabled")
             el.setAttribute("oninput","javascript:confereLetra(this)")
             el.setAttribute("onfocus","this.select()")
+            el.onkeydown = function() {
+                var key = event.keyCode || event.charCode;   
+                var celula = parseInt(this.getAttribute("id").slice(1, 4))   
+
+                // Navegação por setas
+                if(key == 37)                    
+                    celula -= 1
+                else if (key == 38)                  
+                    celula -= 12
+                else if (key == 39)                  
+                    celula += 1
+                else if (key == 40)                  
+                    celula += 12
+
+                if (celula != parseInt(this.getAttribute("id").slice(1, 4)))
+                    document.getElementById("c"+celula).focus()
+            }
         }
     }
 }
@@ -256,6 +277,7 @@ function confereLetra(changed) {
     var meuId = changed.getAttribute("id")
     var meuValue = changed.value.toUpperCase()
 
+    // Busca em qual palavra foi feita a inserção
     for (i=0; i<palavras.length; i++) {
         x = mapaPalavras[i][0]
         y = mapaPalavras[i][1]
@@ -276,6 +298,7 @@ function confereLetra(changed) {
                 if (j == palavras[i].length - 1)
                     mantemDirecao = false
 
+                // Preenche o vetor de acertos
                 if (palavras[i][j] == meuValue)
                     acertos[i][j] = 1
                 else
@@ -298,11 +321,13 @@ function conferePalavra(i) {
     y = mapaPalavras[i][1]
     direcao = mapaPalavras[i][2]
 
+    // Confere se o vetor de acertos de uma palavra está completo
     for (j=0; j<palavras[i].length; j++){
         if (acertos[i][j] != 1)
             acerto = false
     }
 
+    // Se sim, deixa a palavra colorida
     celula = y*12 + (x + 1) 
     if (acerto) {  
         for (j=0; j<palavras[i].length; j++){
