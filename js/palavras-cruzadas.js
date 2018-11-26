@@ -111,7 +111,12 @@ function montaTabuleiro(palavras, dicas) {
                                         (dComp == 0
                                             && (xComp == x
                                             || xComp == x + 1
-                                            || xComp == x - 1)))
+                                            || xComp == x - 1)) ||
+                                        (dComp == 1
+                                            && (xComp == x
+                                            || xComp == x + 1
+                                            || xComp == x - 1)
+                                            && xComp != xPalavraMatch))
 
                                             combina = false
                                 }
@@ -141,7 +146,12 @@ function montaTabuleiro(palavras, dicas) {
                                         (dComp == 1
                                             && (yComp == y
                                             || yComp == y + 1
-                                            || yComp == y - 1)))
+                                            || yComp == y - 1)) ||
+                                        (dComp == 0
+                                            && (yComp == y
+                                            || yComp == y + 1
+                                            || yComp == y - 1)
+                                            && yComp != yPalavraMatch))
                                             
                                             combina = false
                                 }
@@ -190,7 +200,7 @@ function montaTabuleiro(palavras, dicas) {
                                         && (xComp == x
                                         || xComp == x + 1
                                         || xComp == x - 1)) ||
-                                    (dComp == 1 && xComp == x + 1 ))
+                                    (dComp == 1 && (xComp == x + 1 || yComp == y - 1)))
 
                                         combina = false
                             }
@@ -214,7 +224,7 @@ function montaTabuleiro(palavras, dicas) {
                                         && (yComp == y
                                         || yComp == y + 1
                                         || yComp == y - 1)) ||
-                                    (dComp == 0 && yComp == y + 1))
+                                    (dComp == 0 && (yComp == y + 1 || xComp == x - 1)))
                                         
                                         combina = false
                             }
