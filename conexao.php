@@ -1,7 +1,7 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <?php
     try {
-        $conn = new PDO("mysql:host=mysqlinstance.c3yy9bhtywfb.sa-east-1.rds.amazonaws.com;port=3306;dbname=webdb", "sa", "password");
+        $conn = new PDO("mysql:host=trabalhoweb.custksmrwqt0.us-east-2.rds.amazonaws.com;port=3306;dbname=BDWEB", "Oudrikanda", "password");
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     catch(PDOException $e) {
