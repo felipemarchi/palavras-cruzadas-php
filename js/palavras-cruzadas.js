@@ -6,13 +6,16 @@ function btnNovoJogo() {
     form2.removeAttribute("class")
 }
 
+var vetorPalavras = []
 var mapaPalavras = []
 var x, y, direcao
 var acertos = []
-for (var i=0; i<palavras.length; i++)
-    acertos[i] = []
-function montaTabuleiro() {
+function montaTabuleiro(palavras, dicas) {
     
+    vetorPalavras = palavras
+    for (var i=0; i<vetorPalavras.length; i++)
+        acertos[i] = []
+
     // MAPEAR CADA PALAVRA DO VETOR
     // mapaPalavras[i] da palavras[i] = [coordenadaX, coordenadaY, direção]
     // direção (0 = vertical, 1 = horizontal)
@@ -278,14 +281,14 @@ function confereLetra(changed) {
     var meuValue = changed.value.toUpperCase()
 
     // Busca em qual palavra foi feita a inserção
-    for (i=0; i<palavras.length; i++) {
+    for (i=0; i<vetorPalavras.length; i++) {
         x = mapaPalavras[i][0]
         y = mapaPalavras[i][1]
         direcao = mapaPalavras[i][2]
 
         celula = y*12 + (x + 1)
 
-        for (j=0; j<palavras[i].length; j++){
+        for (j=0; j<vetorPalavras[i].length; j++){
             if (j != 0)
                 direcao == 0 ? celula += 12 : celula += 1
 
@@ -295,11 +298,11 @@ function confereLetra(changed) {
                     mantemDirecao = true
                 }
 
-                if (j == palavras[i].length - 1)
+                if (j == vetorPalavras[i].length - 1)
                     mantemDirecao = false
 
                 // Preenche o vetor de acertos
-                if (palavras[i][j] == meuValue)
+                if (vetorPalavras[i][j] == meuValue)
                     acertos[i][j] = 1
                 else
                     acertos[i][j] = 0
@@ -322,7 +325,7 @@ function conferePalavra(i) {
     direcao = mapaPalavras[i][2]
 
     // Confere se o vetor de acertos de uma palavra está completo
-    for (j=0; j<palavras[i].length; j++){
+    for (j=0; j<vetorPalavras[i].length; j++){
         if (acertos[i][j] != 1)
             acerto = false
     }
@@ -330,7 +333,7 @@ function conferePalavra(i) {
     // Se sim, deixa a palavra colorida
     celula = y*12 + (x + 1) 
     if (acerto) {  
-        for (j=0; j<palavras[i].length; j++){
+        for (j=0; j<vetorPalavras[i].length; j++){
             if (j != 0)
                 direcao == 0 ? celula += 12 : celula += 1
 
@@ -341,7 +344,7 @@ function conferePalavra(i) {
                 el.setAttribute("class","celula acerto")
         }
     } else {
-        for (j=0; j<palavras[i].length; j++){
+        for (j=0; j<vetorPalavras[i].length; j++){
             if (j != 0)
                 direcao == 0 ? celula += 12 : celula += 1
 
