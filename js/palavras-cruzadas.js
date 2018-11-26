@@ -6,6 +6,7 @@ function btnNovoJogo() {
     form2.removeAttribute("class")
 }
 
+var lado = 0, mantemDirecao = false
 var vetorPalavras = []
 var mapaPalavras = []
 var x, y, direcao
@@ -265,15 +266,20 @@ function montaTabuleiro(palavras, dicas) {
                     celula += 1
                 else if (key == 40)                  
                     celula += 12
-
-                if (celula != parseInt(this.getAttribute("id").slice(1, 4)))
-                    document.getElementById("c"+celula).focus()
+                
+                // Retorna com backspace
+                else if (key == 8 && this.value == "")
+                    lado == 0 ? celula -= 12 : celula -= 1
+                
+                // Foca
+                document.getElementById("c"+celula).focus()
+                if (key == 8 && this.value == "")
+                    return false
             }
         }
     }
 }
 
-var lado, mantemDirecao = false
 function confereLetra(changed) {
     var i, j
     var celula
@@ -312,9 +318,11 @@ function confereLetra(changed) {
         }
     }
 
-    celula = parseInt(meuId.slice(1, 4))
-    lado == 0 ? celula += 12 : celula += 1
-    document.getElementById("c"+celula).focus()
+    if (changed.value != "") {
+        celula = parseInt(meuId.slice(1, 4))
+        lado == 0 ? celula += 12 : celula += 1
+        document.getElementById("c"+celula).focus()
+    }
 }
 
 function conferePalavra(i) {
