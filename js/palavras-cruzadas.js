@@ -219,7 +219,8 @@ function montaTabuleiro(palavras, dicas) {
             mapaPalavras[i] = [x,y,direcao]
         } else {
             palavras.splice(i,1)
-            vetorPalavras.splice(i,1)
+            dicas.splice(i,1)
+            i--
         }
 
     } // Mapear próxima palavra da lista...
@@ -304,6 +305,14 @@ function confereLetra(changed) {
                 if (j == 0 && mantemDirecao == false) {
                     lado = direcao
                     mantemDirecao = true
+
+                    var completa = true
+                    for (var k=0; k<vetorPalavras[i].length; k++)
+                        if (acertos[i][k] != 1)
+                            completa = false
+                            
+                    if (completa)                    
+                        lado == 0 ? lado = 1 : lado = 0
                 }
 
                 if (j == vetorPalavras[i].length - 1)
@@ -348,7 +357,7 @@ function conferePalavra(i) {
                 direcao == 0 ? celula += 12 : celula += 1
 
             el = document.getElementById("c"+celula)
-            if (j == 0 || el.getAttribute("class") == "celula dica")
+            if (j == 0 || el.getAttribute("class") == "celula dica" || el.getAttribute("class") == "celula dica acerto")
                 el.setAttribute("class","celula dica acerto")
             else
                 el.setAttribute("class","celula acerto")
