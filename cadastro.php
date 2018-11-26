@@ -1,3 +1,4 @@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <?php
     $palavra = strtoupper($_POST["palavra"]);
     $dica = $_POST["dica"];

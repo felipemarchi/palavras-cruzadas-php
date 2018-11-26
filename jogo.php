@@ -1,3 +1,4 @@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <?php   
     if(isset($_POST['categoriaJogo'])) {
         include 'conexao.php';

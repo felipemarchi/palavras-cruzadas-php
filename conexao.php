@@ -1,4 +1,3 @@
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <?php
     try {
         $conn = new PDO("mysql:host=mydbinstance.custksmrwqt0.us-east-2.rds.amazonaws.com;port=3306;dbname=webdb", "sa", "password");
