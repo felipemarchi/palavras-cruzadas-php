@@ -237,6 +237,9 @@ function montaTabuleiro(palavras, dicas) {
             isolarPalavra = false
         }
 
+        if (x > 11 || y > 11 || (direcao != 0 && direcao != 1))
+            combina = false
+
         // Palavra mapeada!
         // Salvar o mapeamento ou excluir palavra da lista
         if (combina) {
@@ -356,6 +359,7 @@ function confereLetra(changed) {
     if (changed.value != "") {
         celula = parseInt(meuId.slice(1, 4))
         lado == 0 ? celula += 12 : celula += 1
+        if (document.getElementById("c"+celula) != null && (celula-1)%12 != 0)
         document.getElementById("c"+celula).focus()
     }
 }
