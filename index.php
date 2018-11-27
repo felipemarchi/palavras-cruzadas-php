@@ -257,6 +257,10 @@
         var tamanho = str.length
         var mensagem = ""
         
+        var acentos = /.*[áéíóúàèìòùâêîôûãõç].*/.exec(str);
+        if (acentos)
+            mensagem = "• A palavra não deve conter acentos!\n"
+
         if (tamanho < 3 || tamanho > 12)
             mensagem = "• A palavra deve conter entre 3 e 12 caracteres!\n"
 

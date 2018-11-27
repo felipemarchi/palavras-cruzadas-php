@@ -26,7 +26,7 @@ function montaTabuleiro(palavras, dicas) {
         dicas[i] = t2
     }
 
-    swal("Controles", "• Clique nas células azuis para preencher uma palavra\n• Utilize as setas de navagação para percorrer o tabuleiro\n• Experimente utilizar a tecla Backspace para corrigir erros", "info");
+    swal("Dicas", "• Clique nas células azuis para preencher uma palavra\n• Utilize as setas de navagação para percorrer o tabuleiro\n• Experimente utilizar a tecla Backspace para corrigir erros\n• Todas as palavras foram cadastradas sem acentos", "info");
 
     vetorPalavras = palavras
     for (var i=0; i<vetorPalavras.length; i++)
