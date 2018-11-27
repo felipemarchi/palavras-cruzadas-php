@@ -359,7 +359,7 @@ function confereLetra(changed) {
     if (changed.value != "") {
         celula = parseInt(meuId.slice(1, 4))
         lado == 0 ? celula += 12 : celula += 1
-        if (document.getElementById("c"+celula) != null && (celula-1)%12 != 0)
+        if (document.getElementById("c"+celula) != null)
         document.getElementById("c"+celula).focus()
     }
 }
