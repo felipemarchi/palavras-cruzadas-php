@@ -263,12 +263,12 @@
 
         var espacos = /.*[\s].*/.exec(str);
         if (espacos) {
-            mensagem = "• A palavra não deve conter espaços!\n"
+            mensagem += "• A palavra não deve conter espaços!\n"
             form.dica.value += " *palavracomposta"
         }
 
         if (tamanho < 3 || tamanho > 12)
-            mensagem = "• A palavra deve conter entre 3 e 12 caracteres!\n"
+            mensagem += "• A palavra deve conter entre 3 e 12 caracteres!\n"
 
         if (form.categoria.value == "" && form.novaCategoria.value == "")
             mensagem += "• A palavra deve possuir uma categoria!"
