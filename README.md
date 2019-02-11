@@ -8,3 +8,4 @@
 	- Coluna "palavra" PK
 	- Coluna "dica"
 	- Coluna "categoria"
+# Cruzadinha
