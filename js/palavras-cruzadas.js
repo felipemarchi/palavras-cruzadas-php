@@ -10,7 +10,7 @@ function carregaDados() {
     var palavras=[]
     var dicas=[]
     
-    document.getElementById("btnJogar").setAttribute("disabled", "disabled")
+    document.getElementById("btnJogar").setAttribute("onclick", "")
 
     palavras.push("ABELHA")
     dicas.push("Mel")
