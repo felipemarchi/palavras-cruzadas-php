@@ -6,6 +6,94 @@ function btnNovoJogo() {
     form2.removeAttribute("class")
 }
 
+function carregaDados() {
+    var palavras=[]
+    var dicas=[]
+
+    palavras.push("ABELHA")
+    dicas.push("Mel")
+    palavras.push("AMARELO")
+    dicas.push("Sol")
+    palavras.push("ANIL")
+    dicas.push("Cor do arco-iris que todos esquecem")
+    palavras.push("AZUL")
+    dicas.push("Cor do mar")
+    palavras.push("BALEIA")
+    dicas.push("Aquático, grande e pasado")
+    palavras.push("BASQUETE")
+    dicas.push("Enterrada")
+    palavras.push("BRANCO")
+    dicas.push("Cor da paz")
+    palavras.push("CACHORRO")
+    dicas.push("Amigo do homem")
+    palavras.push("CANGURU")
+    dicas.push("Lutador de boxe selvagem")
+    palavras.push("CICLISMO")
+    dicas.push("Esporte de bicicletas")
+    palavras.push("CINZA")
+    dicas.push("Preto com branco")
+    palavras.push("CORRIDA")
+    dicas.push("Velocidade")
+    palavras.push("ELEFANTE")
+    dicas.push("Marfim")
+    palavras.push("FLAMINGO")
+    dicas.push("Penas rosas")
+    palavras.push("FUTEBOL")
+    dicas.push("Brasil, país do...")
+    palavras.push("FUTSAL")
+    dicas.push("Futebol de quadra")
+    palavras.push("GATO")
+    dicas.push("Tem 7 vidas")
+    palavras.push("GINASTICA")
+    dicas.push("Daiane dos Santos")
+    palavras.push("GIRAFA")
+    dicas.push("Provavelmente o animal mais alto")
+    palavras.push("GOLF")
+    dicas.push("Carrinho, bandeira e lagos")
+    palavras.push("GORILA")
+    dicas.push("King Kong")
+    palavras.push("HANDEBOL")
+    dicas.push("Esporte de trave paralelepípeda")
+    palavras.push("HIPISMO")
+    dicas.push("Esporte de Cavalos")
+    palavras.push("JUDO")
+    dicas.push("Luta")
+    palavras.push("LARANJA")
+    dicas.push("Fruta cítrica")
+    palavras.push("MAGENTA")
+    dicas.push("Tinta rosa de impressora")
+    palavras.push("MARROM")
+    dicas.push("Cor de terra")
+    palavras.push("MOSTARDA")
+    dicas.push("Cor Cachorro-quente")
+    palavras.push("NATACAO")
+    dicas.push("Piscina")
+    palavras.push("OVELHA")
+    dicas.push("Lã")
+    palavras.push("PAPAGAIO")
+    dicas.push("Ave que fala")
+    palavras.push("PRATA")
+    dicas.push("Cor metálica")
+    palavras.push("PRETO")
+    dicas.push("Não reflete luz")
+    palavras.push("ROSA")
+    dicas.push("flor")
+    palavras.push("RUGBY")
+    dicas.push("Estilo Futebol Americano")
+    palavras.push("SURF")
+    dicas.push("Praia")
+    palavras.push("TENIS")
+    dicas.push("Esporte de raquete")
+    palavras.push("VERDE")
+    dicas.push("Natureza")
+    palavras.push("VERMELHO")
+    dicas.push("Cor do sangue")
+    palavras.push("VOLEI")
+    dicas.push("Manchete")
+
+    montaTabuleiro(palavras, dicas)
+}
+
 var lado = 0, mantemDirecao = false
 var vetorPalavras = []
 var mapaPalavras = []
@@ -26,7 +114,7 @@ function montaTabuleiro(palavras, dicas) {
         dicas[i] = t2
     }
 
-    swal("Dicas", "• Clique nas células azuis para preencher uma palavra\n• Utilize as setas de navagação para percorrer o tabuleiro\n• Experimente utilizar a tecla Backspace para corrigir erros\n• Todas as palavras foram cadastradas sem acentos", "info");
+    swal("Dicas", "• Clique nas células azuis para preencher uma palavra\n• Utilize as setas de navegação para percorrer o tabuleiro\n• Experimente utilizar a tecla Backspace para corrigir erros\n• Todas as palavras foram cadastradas sem acentos", "info");
 
     vetorPalavras = palavras
     for (var i=0; i<vetorPalavras.length; i++)
@@ -411,5 +499,8 @@ function conferePalavra(i) {
                 acerto = false
 
     if (acerto)
-        swal("Parabéns!", "Você completou o jogo!", "success");
+        swal("Parabéns!","Você completou o jogo!","success").then(function(){ 
+            location.reload();
+            }
+        );
 }
