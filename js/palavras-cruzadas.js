@@ -9,6 +9,8 @@ function btnNovoJogo() {
 function carregaDados() {
     var palavras=[]
     var dicas=[]
+    
+    document.getElementById("btnJogar").setAttribute("disabled", "disabled")
 
     palavras.push("ABELHA")
     dicas.push("Mel")
