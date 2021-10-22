@@ -6,8 +6,8 @@
 ![Tela do Jogo](https://github.com/felipemarchi/palavras-cruzadas-php/blob/master/arquivos/snapshot.png "Tela do Jogo")
 
 ## Requisitos para o uso da solução dinâmica
-- Conexão em Servidor PHP
-- Conexão em Banco de Dados (`conexao.php`)
+- **Conexão em Servidor PHP
+- **Conexão em Banco de Dados (`conexao.php`)
 	- Tabela "cruzada"
 	- Coluna "palavra" PK
 	- Coluna "dica"
